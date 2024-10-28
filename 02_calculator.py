@@ -1,25 +1,39 @@
-def Calculator():
-    a = float(input("Enter First Number: "))
-    b = (input("Enter Operator: "))
-    c = float(input("Enter Second Number: ")) 
+## a command line utilty of calculations
 
-    if (b == '+'):
-        result = (a + c)
-    elif (b == '-'):
-        result = (a - c)
-    elif (b == '*'):
-        result = (a * c)
-    elif (b == '/'):
-        result = (a / c)
-    elif (b == '**'):
-        result = (a ** c)
-    elif (b == '//'):
-        result = (a//c)
+'''
+to use this command line utility, open this file in cmd or powershell, or according to your OS
+
+write command like this to calculate the the values:-
+
+--> after opening this file do not click enter start writing after the path of the file
+--> --x (first number) --o (operator) --y (second number)
+
+'''
+
+import argparse
+
+def calc(a, b):
+    if args.o == '+':
+        return a+b
+    elif args.o == '-':
+        return a-b
+    elif args.o == '*':
+        return a*b
+    elif args.o == '/':
+        return a/b
+    elif args.o == '**':
+        return a**b
     else:
-        result = ("Invalid Operator")   
+        return 'enter valid operator'
 
-    print(result)   
 
-while True:
-    Calculator()
+argument = argparse.ArgumentParser()
 
+argument.add_argument('--x', type=int, required=True)
+argument.add_argument('--o', type=str, required=True)
+argument.add_argument('--y', type=int, required=True)
+
+args = argument.parse_args()
+
+result = calc(args.x, args.y)
+print(result)
