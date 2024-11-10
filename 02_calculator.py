@@ -82,7 +82,7 @@ class InputForm(Frame):
                 self.output_box.config(text=new_text)
         elif value == "%":
             try:
-                new_text = float(current_text)/100
+                new_text = str(eval(str(int(current_text)/100)))
                 self.output_box.config(text=new_text)
             except:
                 self.output_box.config(text="Error")
