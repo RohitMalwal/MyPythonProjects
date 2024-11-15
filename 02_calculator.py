@@ -1,3 +1,5 @@
+'''Calculator with GUI'''
+
 from tkinter import *
 
 def main():
