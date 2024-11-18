@@ -70,10 +70,13 @@ def TenThousands():
         pass
 
 if __name__ == "__main__":
-    OneDigit()
-    Teen()
-    Tens()
-    TwoDigits()
-    Hundreds()
-    Thousands()
-    TenThousands()
+    if num[0:] == "0"*len(num):
+        print("Zero")
+    else:
+        OneDigit()
+        Teen()
+        Tens()
+        TwoDigits()
+        Hundreds()
+        Thousands()
+        TenThousands()
