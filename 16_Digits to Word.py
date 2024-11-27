@@ -58,8 +58,12 @@ def Thousands():
         elif number[2] == "1":
             print(f"{ones[int(number[0])]} {thousands[1]} {ones[int(number[1])]} {hundreds[1]} and\
  {teens[int(number[3])]}", end=" ")
+        elif number[1] == "0" and number[2] == "0":
+            print(f"{ones[int(number[0])]} {thousands[1]} and {ones[int(number[3])]}", end=" ")
         elif number[1] == "0":
             print(f"{ones[int(number[0])]} {thousands[1]} and {tens[int(number[2])]} {ones[int(number[3])]}", end=" ")
+        elif number[2] == "0":
+            print(f"{ones[int(number[0])]} {thousands[1]} and {ones[int(number[3])]}", end=" ")
         else:
             print(f"{ones[int(number[0])]} {thousands[1]} {ones[int(number[1])]} {hundreds[1]} and\
  {tens[int(number[2])]} {ones[int(number[3])]}", end=" ")
@@ -67,6 +71,8 @@ def Thousands():
 # identify ten thousands
 def TenThousands():
     if len(number) == 5:
+        # if number[1:] == "0"*(len(number) - 1):
+        #     print(f"{teens[int(number[0])-1]} {thousands[1]}")
         pass
 
 if __name__ == "__main__":

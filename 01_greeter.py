@@ -1,10 +1,13 @@
 import time
 from win32com.client import Dispatch
+import random
+
+item = random.randint(0, 2)
 
 speak = Dispatch('SAPI.SpVoice')
 voices = speak.getVoices()
 speak.voice
-speak.SetVoice(voices.item(1))
+speak.SetVoice(voices.item(item))
 
 a = (time.strftime('%I:%M:%S'))
  
