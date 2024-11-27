@@ -1,88 +1,66 @@
-num = (input("Enter the number: "))
-number = num.lstrip("0")
+num = input("enter the number: ").lstrip("0")
 
-ones = [
-    "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"
-]
-teens = [
-    "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", 
-    "Seventeen", "Eighteen", "Nineteen"
-]
-tens = [
-    "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", 
-    "Eighty", "Ninety"
-]
-thousands = ["", "Thousand"]
-hundreds = ["", "Hundred"]
+def int_to_word(num):
+    d = { 0 : 'Zero', 1 : 'One', 2 : 'Two', 3 : 'Three', 4 : 'Four', 5 : 'Five',
+        6 : 'Six', 7 : 'Seven', 8 : 'Eight', 9 : 'Nine', 10 : 'Ten',
+        11 : 'Eleven', 12 : 'Twelve', 13 : 'Thirteen', 14 : 'Fourteen',
+        15 : 'Fifteen', 16 : 'Sixteen', 17 : 'Seventeen', 18 : 'Eighteen',
+        19 : 'Nineteen', 20 : 'Twenty',
+        30 : 'Thirty', 40 : 'Forty', 50 : 'Fifty', 60 : 'Sixty',
+        70 : 'Seventy', 80 : 'Eighty', 90 : 'Ninety' }
 
-if len(number) == 1 and number == "0":
-    print("Zero", end=" ")
+    k = 1000
+    m = k * k
+    b = m * k
+    t = b * k   
 
-# identify one digit number
-def OneDigit():
-    if len(number) == 1:
-        print(ones[int(number)], end=" ")
+    number = int(num)
 
-# identify teens
-def Teen():
-     if len(number) == 2 and number[0] == "1" :
-        print(teens[int(number[1])], end=" ")
-
-# identify tens
-def Tens():
-     if len(number) == 2 and number[1] == "0":
-        print(tens[int(number[0])], end=" ")
-
-# identify two digits
-def TwoDigits():
-    if len(number) == 2 and number[0] != "1" and number[1] != "0":
-        print(f"{tens[int(number[0])]} {ones[int(number[1])]}", end=" ")
-
-# identify hundreds
-def Hundreds():
-    if len(number) == 3:
-        if number[1:] == "0"*(len(number)-1):
-            print(f"{ones[int(number[0])]} {hundreds[1]}", end=" ")
-        elif number[1] == "1":
-            print(f"{ones[int(number[0])]} {hundreds[1]} and {teens[int(number[2])]}", end=" ")
-        elif number[1] == "0":
-            print(f"{ones[int(number[0])]} {hundreds[1]} and {ones[int(number[2])]}", end=" ")
-        else:
-            print(f"{ones[int(number[0])]} {hundreds[1]} and {tens[int(number[1])]} {ones[int(number[2])]}", end=" ")
+    try:
+        assert int(number)>=0
+    except AssertionError:
+        return("Enter a valid positive number.")
     
-# identify thousands
-def Thousands():
-    if len(number) == 4:
-        if number[1:] == "0"*(len(number) - 1):
-            print(f"{ones[int(number[0])]} {thousands[1]}", end=" ")
-        elif number[2] == "1":
-            print(f"{ones[int(number[0])]} {thousands[1]} {ones[int(number[1])]} {hundreds[1]} and\
- {teens[int(number[3])]}", end=" ")
-        elif number[1] == "0" and number[2] == "0":
-            print(f"{ones[int(number[0])]} {thousands[1]} and {ones[int(number[3])]}", end=" ")
-        elif number[1] == "0":
-            print(f"{ones[int(number[0])]} {thousands[1]} and {tens[int(number[2])]} {ones[int(number[3])]}", end=" ")
-        elif number[2] == "0":
-            print(f"{ones[int(number[0])]} {thousands[1]} and {ones[int(number[3])]}", end=" ")
+    if (number) < 20:
+        return (d[(number)])
+
+    if (number) < 100:
+        if (number) % 10 == 0:
+            return (d[(number)])
         else:
-            print(f"{ones[int(number[0])]} {thousands[1]} {ones[int(number[1])]} {hundreds[1]} and\
- {tens[int(number[2])]} {ones[int(number[3])]}", end=" ")
+            return (f"{d[(number) // 10 * 10]}-{d[(number) % 10]}")
+    
+    if (number) < k:
+        if (number) % 100 == 0:
+            return (f"{d[(number) // 100]} Hundred")
+        else:
+            return (f"{d[(number) // 100]} Hundred and {int_to_word(number % 100)}")
+        
+    if (number) < m:
+        if (number) % k == 0:
+            return (f"{int_to_word((number) // k)} Thousand")
+        else:
+            return (f"{int_to_word((number) // k)} Thousand, {int_to_word((number % k))}")
+    
+    if (number) < b:
+        if (number) % m == 0:
+            return (f"{int_to_word((number) // m)} Million")
+        else:
+            return (f"{int_to_word((number) // m)} Million, {int_to_word((number) % m)}")
+    
+    if (number) < t:
+        if (number) % b == 0:
+            return (f"{int_to_word((number) // b)} Billion")
+        else:
+            return (f"{int_to_word((number) // b)} Billion, {int_to_word((number) % b)}")
+    
+    if (number) > t:
+        if (number) % t == 0:
+            return (f"{int_to_word((number) // t)} Trillion")
+        else:
+            return (f"{int_to_word((number) // t)} Trillion, {int_to_word((number) % t)}")
 
-# identify ten thousands
-def TenThousands():
-    if len(number) == 5:
-        # if number[1:] == "0"*(len(number) - 1):
-        #     print(f"{teens[int(number[0])-1]} {thousands[1]}")
-        pass
-
-if __name__ == "__main__":
-    if num[0:] == "0"*len(num):
-        print("Zero")
-    else:
-        OneDigit()
-        Teen()
-        Tens()
-        TwoDigits()
-        Hundreds()
-        Thousands()
-        TenThousands()
+if __name__=="__main__":
+    result = int_to_word(num)
+    if result:
+        print(result)
