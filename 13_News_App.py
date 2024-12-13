@@ -19,4 +19,4 @@ for article in data['articles']:
     print(f"Description: {article['description']}")
     print("______________________________________")
 
-input('pree ENTER to exit')
+input('press ENTER to exit')

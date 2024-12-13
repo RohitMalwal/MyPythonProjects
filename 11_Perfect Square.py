@@ -12,6 +12,6 @@ while True:
     x = sqrt((a*a)+(b*b)+(c*c))
     for item in list_:
         if x == float(item):
-            rprint(f"⊗ Numbers :- [bold green]{a}[/bold green], [bold green]{b}[/bold green]\
- and [bold green]{c} [/bold green]\n —> Answer :-  [bold blue]{x}[/bold blue]")
+            rprint(f"⊗ Numbers :- [bold green]{a}[/bold green], [bold green]{b}[/bold green] and \
+[bold green]{c} [/bold green]\n —> Answer :-  [bold blue]{x}[/bold blue]")
             time.sleep(1)

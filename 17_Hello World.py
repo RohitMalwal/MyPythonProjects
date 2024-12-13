@@ -16,3 +16,5 @@ for letter in word:
             result += l
             break
         sleep(0.01)
+
+input("Press ENTER to exit.")
